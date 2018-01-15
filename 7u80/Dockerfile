@@ -11,10 +11,7 @@ RUN mkdir -pv /opt/goodrain/java/
 
 COPY setmem.sh /opt/goodrain/java/setmem.sh
 
-COPY jdk-7u80-linux-x64.tar.gz /tmp/
-
-RUN cd /tmp && \
-    curl -ks https://pkg.goodrain.com/apps/java/jdk/jdk-${ORACLE_JDK_VERSION}-linux-x64.tar.gz | tar xz -C /opt/goodrain/java && \
+RUN curl -ks https://pkg.goodrain.com/apps/java/jdk/jdk-${ORACLE_JDK_VERSION}-linux-x64.tar.gz | tar xz -C /opt/goodrain/java && \
     ln -s /opt/goodrain/java/jdk* /opt/goodrain/java/jdk && \
     ln -s /opt/goodrain/java/jdk /opt/goodrain/java/jvm && \
     chown -R java:java /opt/goodrain/java && \
