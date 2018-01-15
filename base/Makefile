@@ -1,4 +1,4 @@
-NAME = goodrain-apps/oraclebase
+NAME = goodrainapps/oraclebase
 VERSION = jessie
 
 .PHONY: all clean build tag_latest release debug run

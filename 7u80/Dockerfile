@@ -1,4 +1,4 @@
-FROM goodrain-apps/oraclebase:jessie
+FROM goodrainapps/oraclebase:jessie
 
 MAINTAINER rainbond@goodrain.com
 
