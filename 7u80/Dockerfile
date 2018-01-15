@@ -7,7 +7,7 @@ ENV PINPOINT_AGETN_VERSION="1.7.0"
 ENV ORACLE_JDK_VERSION="7u80"
 ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent"
 
-RUN mkdir -pv /opt/goodrain/java/
+RUN mkdir -pv /opt/goodrain/java/ && mkdir -pv /usr/local/pinpoint-agent
 
 COPY setmem.sh /opt/goodrain/java/setmem.sh
 
@@ -15,11 +15,8 @@ RUN curl -ks https://pkg.goodrain.com/apps/java/jdk/jdk-${ORACLE_JDK_VERSION}-li
     ln -s /opt/goodrain/java/jdk* /opt/goodrain/java/jdk && \
     ln -s /opt/goodrain/java/jdk /opt/goodrain/java/jvm && \
     chown -R java:java /opt/goodrain/java && \
+    curl -ks https://pkg.goodrain.com/apps/pinpoint/pinpoint-agent-${PINPOINT_AGETN_VERSION}.tar.gz | tar xz -C /usr/local/pinpoint-agent && \
     /root/post-install
-
-RUN mkdir -pv $PINPOINT_AGENT_PATH \
-    && curl -ks https://pkg.goodrain.com/apps/pinpoint/pinpoint-agent-${PINPOINT_AGETN_VERSION}.tar.gz | tar xz -C /usr/local/pinpoint-agent
-
 
 ENV JAVA_HOME=/opt/goodrain/java/jdk \
     PATH=${PATH}:/opt/goodrain/java/jdk/bin:/opt/goodrain/java
