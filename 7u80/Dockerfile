@@ -2,10 +2,10 @@ FROM goodrainapps/oraclebase:jessie
 
 MAINTAINER rainbond@goodrain.com
 
-ENV LANG en_US.utf8
-ENV PINPOINT_AGETN_VERSION="1.7.0"
-ENV ORACLE_JDK_VERSION="7u80"
-ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent"
+ENV LANG C.UTF-8
+ENV PINPOINT_AGETN_VERSION "1.7.0"
+ENV ORACLE_JDK_VERSION "7u80"
+ENV PINPOINT_AGENT_PATH "/usr/local/pinpoint-agent"
 
 RUN mkdir -pv /opt/goodrain/java/ && mkdir -pv /usr/local/pinpoint-agent
 
@@ -18,5 +18,6 @@ RUN curl -ks https://pkg.goodrain.com/apps/java/jdk/jdk-${ORACLE_JDK_VERSION}-li
     curl -ks https://pkg.goodrain.com/apps/pinpoint/pinpoint-agent-${PINPOINT_AGETN_VERSION}.tar.gz | tar xz -C /usr/local/pinpoint-agent && \
     /root/post-install
 
-ENV JAVA_HOME=/opt/goodrain/java/jdk \
-    PATH=${PATH}:/opt/goodrain/java/jdk/bin:/opt/goodrain/java
+ENV JAVA_HOME /opt/goodrain/java/jdk 
+ENV EJAVA_OPTS -Duser.timezone=Asia/Shanghai 
+ENV PATH ${PATH}:/opt/goodrain/java/jdk/bin:/opt/goodrain/java
