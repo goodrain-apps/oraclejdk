@@ -1,2 +1,2 @@
 build:
-	@docker build --tag=goodrainapps/oraclejdk:$(shell cat VERSION) .
+	@docker build --tag=goodrain-apps/oraclejdk:$(shell cat VERSION) .
