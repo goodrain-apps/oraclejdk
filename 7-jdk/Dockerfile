@@ -4,6 +4,7 @@ MAINTAINER rainbond@goodrain.com
 
 ENV LANG en_US.utf8
 ENV PINPOINT_AGETN_VERSION="1.7.0"
+ENV ORACLE_JDK_VERSION="7u80"
 ENV PINPOINT_AGENT_PATH="/usr/local/pinpoint-agent"
 
 RUN mkdir -pv /opt/goodrain/java/
@@ -13,8 +14,7 @@ COPY setmem.sh /opt/goodrain/java/setmem.sh
 COPY jdk-7u80-linux-x64.tar.gz /tmp/
 
 RUN cd /tmp && \
-    tar xf jdk-7u80-linux-x64.tar.gz -C /opt/goodrain/java && \
-    rm -rf jdk-7u80-linux-x64.tar.gz && \
+    curl -ks https://pkg.goodrain.com/apps/java/jdk/jdk-${ORACLE_JDK_VERSION}-linux-x64.tar.gz | tar xz -C /opt/goodrain/java && \
     ln -s /opt/goodrain/java/jdk* /opt/goodrain/java/jdk && \
     ln -s /opt/goodrain/java/jdk /opt/goodrain/java/jvm && \
     chown -R java:java /opt/goodrain/java && \
