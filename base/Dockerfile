@@ -49,7 +49,7 @@ RUN set -x && \
     gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini  && \
     rm -r "$GNUPGHOME" /usr/local/bin/tini.asc  && \
     chmod +x /usr/local/bin/tini  && \
-    apt-get purge -y --auto-remove ca-certificates wget  && \
+    apt-get purge -y --auto-remove ca-certificates  && \
     mv /root/aliases /root/.aliases && \
     echo "source ~/.aliases" >> /root/.bashrc && \
     /root/create-user redis 4201 redis 4201  && \
