@@ -29,7 +29,7 @@ ADD asset/* /root/
 
 RUN set -x && \
     apt-get update -qq && \
-    apt-get install -y apt-utils wget nano curl locales && \
+    apt-get install -y apt-utils wget nano curl locales net-tools && \
     apt-get install -y --no-install-recommends ca-certificates && \
     sed -i 's/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g' /etc/locale.gen && locale-gen && \
     update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
